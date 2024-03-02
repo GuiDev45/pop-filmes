@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useFetchMovies } from "../services/Api";
 
 interface Movie {
   id: number;
@@ -7,44 +7,33 @@ interface Movie {
   poster_path: string;
 }
 
-type MovieApiResponse = {
-  results: Movie[];
-};
-
 export default function TestApi() {
-  const [data, setData] = useState<MovieApiResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const { data, isLoading, isError } = useFetchMovies(pageNumber);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<MovieApiResponse>(
-          "https://api.themoviedb.org/3/trending/movie/day",
-          {
-            params: {
-              api_key: "308669bdff0df0fa1c1cc92c06f8d1dd",
-              language: "pt-BR", // Definindo o idioma para português do Brasil
-            },
-          },
-        );
-        setData(response.data);
-      } catch (error) {
-        setError("Erro ao carregar dados da API");
-      }
-    };
+  const nextPage = () => {
+    setPageNumber((prevPageNumber) => prevPageNumber + 1);
+  };
 
-    fetchData();
-  }, []);
+  const prevPage = () => {
+    setPageNumber((prevPageNumber) => Math.max(prevPageNumber - 1, 1));
+  };
+
+  if (isLoading) return <div>Carregando...</div>;
+  if (isError) return <div>Erro ao carregar dados da API</div>;
 
   return (
     <div>
       <h2>Teste de API do The Movie Database</h2>
-      {error && <p>{error}</p>}
       {data && (
         <div>
           <h3>Filmes</h3>
+          <button onClick={prevPage} disabled={pageNumber === 1}>
+            Página Anterior
+          </button>
+          <button onClick={nextPage}>Próxima Página</button>
           <ul>
-            {data.results.map((movie) => (
+            {data.results.map((movie: Movie) => (
               <li key={movie.id}>
                 <h4>{movie.title}</h4>
                 {movie.poster_path && (
