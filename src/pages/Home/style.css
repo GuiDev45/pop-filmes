@@ -1,16 +1,30 @@
+/*Header*/
 .containerHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: var(--bg2);
+  padding: 20px 10%;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .navLinks {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 25px;
   margin: 0 auto;
+}
+
+.iconLogo {
+  width: 100px;
+  height: auto;
+}
+
+.iconPlus, .iconSearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .iconPlus {
@@ -19,9 +33,6 @@
 
 .iconSearch {
   fill: var(--p3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .bg {
