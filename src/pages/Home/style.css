@@ -28,7 +28,7 @@
   background-color: var(--bg2);
 }
 
-a {
+.links {
   color: var(--p1);
   font-size: 16px;
   font-weight: 600;

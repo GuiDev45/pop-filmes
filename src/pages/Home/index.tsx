@@ -1,29 +1,47 @@
 import { FaPlus, FaSearch } from "react-icons/fa";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
     <div className="containerHeader">
       <div className="navLinks gap-4">
-        <a href="#">
+        <Link to={"/"}>
           <img src="/public/logo.svg" alt="Logo Pop" />
-        </a>
-        <a href="#">Filmes</a>
-        <a href="#">Séries</a>
-        <a href="#">Pessoas</a>
-        <a href="#">Mais</a>
+        </Link>
+        <Link to={"#"} className="links">
+          Filmes
+        </Link>
+        <Link to={"#"} className="links">
+          Séries
+        </Link>
+        <Link to={"#"} className="links">
+          Pessoas
+        </Link>
+        <Link to={"#"} className="links">
+          Mais
+        </Link>
       </div>
 
       <div className="navLinks gap-4">
-        <a href="#">
+        <Link to={"#"}>
           <FaPlus className="iconPlus" />
-        </a>
-        <a href="#">PT</a>
-        <a href="#">Entrar</a>
-        <a href="#">Junte-se ao POP</a>
-        <a href="#">
+        </Link>
+        <Link to={"#"} className="links">
+          Pessoas
+        </Link>
+        <Link to={"#"} className="links">
+          PT
+        </Link>
+        <Link to={"#"} className="links">
+          Entrar
+        </Link>
+        <Link to={"/login"} className="links">
+          Junte-se ao POP
+        </Link>
+        <Link to={"#"}>
           <FaSearch className="iconSearch" size={20} />
-        </a>
+        </Link>
       </div>
     </div>
   );
