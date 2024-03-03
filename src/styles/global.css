@@ -1,3 +1,30 @@
-h1 {
-  color: red;
+/*Variável*/
+:root {
+
+  /*Cores*/
+  --p1: #F9F9F9;
+  --p2: #C1C2C6;
+  --p3: #31C8E5;
+  --bg1: #212832;
+  --bg2: #313842;
+
+  /*Fontes*/
+  --f1: 'Source Sans Pro';
+  --f2: 'Roboto';
+  --f3: sans-serif;
+
+  /*Tamanho fontes*/
+  --fs1: 1rem; /*16px*/
+  --fs2: 0.875rem; /*14px*/
+
+  /*Tamanho títulos*/
+  --t1: 2rem; /*32px*/
 }
+
+/*Estilo geral*/
+body {
+  font-family: var(--f1), var(--f2), var(--f3);
+  background-color: var(--bg1);
+  color: var(--p1)
+}
+

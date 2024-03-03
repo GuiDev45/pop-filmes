@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { useFetchMovies } from "../services/Api";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-}
+import { Movie } from "../types/MovieType";
 
 export default function TestApi() {
   const [pageNumber, setPageNumber] = useState(1);
